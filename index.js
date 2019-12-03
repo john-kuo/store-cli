@@ -8,6 +8,13 @@ module.exports = () => {
   const cmd = args._[0];
   let data = JSON.parse(fs.readFileSync(COLLECTION_NAME, 'utf8'));
 
+  const writeToFile = (_file_name, _data) => {
+    fs.writeFileSync(_file_name, JSON.stringify(_data), function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+      });
+  };
+
   const addKeyValue = () => {
     //TODO error out if there is no 3rd and 4th args
     //TODO error if a key existed
@@ -17,10 +24,7 @@ module.exports = () => {
         [inputKey] : inpuValue
     };
     data.push(obj);
-    fs.writeFileSync(COLLECTION_NAME, JSON.stringify(data), function (err) {
-        if (err) throw err;
-        console.log('Saved!');
-      });
+    writeToFile(COLLECTION_NAME, data);
   };
 
   const getKey = (_key) => {
@@ -31,21 +35,33 @@ module.exports = () => {
     result = (result !== undefined) ? result[inputKey] : 'key is not defined';
     console.log(result);
   };
+
+  const removeObjByKey = (_key) => {
+    let isKeyExisted = (_obj) => _obj[_key] !== undefined;  
+    let index = data.findIndex(isKeyExisted);
+    if(index !== -1){
+        data.splice(index, 1);
+        writeToFile(COLLECTION_NAME, data);
+        console.log('key ' + args._[1] + ' has been removed');
+    } else {
+        console.error('unable to remove value by key ' + args._[1]);
+    }
+  };
     
   switch (cmd) {
     case 'add':
         addKeyValue();
-      break;
+        break;
     case 'list':
         //TODO improvement to display data nicely
         console.log("data = " + JSON.stringify(data));
-    break; 
+        break; 
     case 'get':
         getKey(args._[1]);
     break; 
     case 'remove':
-        console.log("today!");
-    break; 
+        removeObjByKey(args._[1]);
+        break; 
     default:
       console.error(`"${cmd}" is not a valid command!`);
       break;
