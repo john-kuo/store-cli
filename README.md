@@ -1,8 +1,11 @@
-# challenge-one
-Simple Node developer challenge.
+# Summary
 
-### Goal
-Clone this repo and build a simple key/value store CLI using only the core Node API. Once you have finished the challenge, please deliver it by providing a GitHub repo, Dropbox, or Google Drive link.
+store-cli allows user to add, list, get and remove key/value pairs using CLI.
+
+### Steps to run the CLI
+
+1. `npm install`
+2. `npm link`
 
 ### Store API
 
@@ -13,3 +16,13 @@ Clone this repo and build a simple key/value store CLI using only the core Node 
 `$ store get mykey`
 
 `$ store remove mykey`
+
+### Assumptions
+
+1. a key needs to be unique
+
+### Improvements
+
+1. enforce error checking for parameters e.g. store add , missing key and value
+2. help menu
+3. better listing

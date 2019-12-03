@@ -13,7 +13,7 @@
   "author": "Nathan Kuo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nathan-kuo/store-cliissues"
+    "url": "https://github.com/nathan-kuo/store-cli/issues"
   },
   "bin": {
     "store": "bin/store"

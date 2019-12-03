@@ -16,15 +16,21 @@ module.exports = () => {
   };
 
   const addKeyValue = () => {
-    //TODO error out if there is no 3rd and 4th args
-    //TODO error if a key existed
     let inputKey = args._[1];
     let inpuValue = args._[2];
-    let obj = {
-        [inputKey] : inpuValue
-    };
-    data.push(obj);
-    writeToFile(COLLECTION_NAME, data);
+    let result = _.find(data, function(_val){
+        return ( (_val[inputKey] !== undefined));
+    });
+
+    if((result !== undefined)){
+        console.error('key has been inserted please use a different key');
+    } else {
+        let obj = {
+            [inputKey] : inpuValue
+        };
+        data.push(obj);
+        writeToFile(COLLECTION_NAME, data);
+    }
   };
 
   const getKey = (_key) => {
@@ -47,14 +53,19 @@ module.exports = () => {
         console.error('unable to remove value by key ' + args._[1]);
     }
   };
+
+  const displayData = () => {
+    _.each(data, function(_val){
+        console.log(_val);
+    });
+  };
     
   switch (cmd) {
     case 'add':
         addKeyValue();
         break;
     case 'list':
-        //TODO improvement to display data nicely
-        console.log("data = " + JSON.stringify(data));
+        displayData();
         break; 
     case 'get':
         getKey(args._[1]);
@@ -63,8 +74,8 @@ module.exports = () => {
         removeObjByKey(args._[1]);
         break; 
     default:
-      console.error(`"${cmd}" is not a valid command!`);
-      break;
+        console.error(`"${cmd}" is not a valid command!`);
+        break;
   }
 
 };
