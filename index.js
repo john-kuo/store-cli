@@ -33,7 +33,7 @@ module.exports = () => {
     }
   };
 
-  const getKey = (_key) => {
+  const getValueByKey = (_key) => {
     let inputKey = _key;
     let result = _.find(data, function(_val){
         return ( (_val[inputKey] !== undefined));
@@ -68,7 +68,7 @@ module.exports = () => {
         displayData();
         break; 
     case 'get':
-        getKey(args._[1]);
+        getValueByKey(args._[1]);
     break; 
     case 'remove':
         removeObjByKey(args._[1]);
