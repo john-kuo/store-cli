@@ -1,0 +1,27 @@
+{
+  "name": "store-cli",
+  "version": "1.0.0",
+  "description": "Simple CLI utility to allow user to store, list, get and remove key/value pair",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathan-kuo/store-cli.git"
+  },
+  "author": "Nathan Kuo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nathan-kuo/store-cliissues"
+  },
+  "bin": {
+    "store": "bin/store"
+  },
+  "homepage": "https://github.com/nathan-kuo/store-cli#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "minimist": "^1.2.0",
+    "underscore": "^1.9.1"
+  }
+}
