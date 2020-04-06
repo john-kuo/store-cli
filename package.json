@@ -21,7 +21,7 @@
   "homepage": "https://github.com/nathan-kuo/store-cli#readme",
   "dependencies": {
     "fs": "0.0.1-security",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.3",
     "underscore": "^1.9.1"
   }
 }
